@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Tic-tac-toe
 
 This project is a competitive style Tic-Tac-Toe that uses a point system to keep track
@@ -18,3 +19,6 @@ this game mode isn't for you.
 
 The consolation prize photos was pulled from the following site:
 https://pixabay.com/vectors/potato-vegetable-raw-food-healthy-576598/
+=======
+# Tic-tac-toe
+>>>>>>> 966ce42 (Initial commit)
