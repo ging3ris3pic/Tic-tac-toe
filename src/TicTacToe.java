@@ -30,7 +30,6 @@ public class TicTacToe implements ActionListener{
     ConsolationPrize prize = new ConsolationPrize();//implements the interface award
     File file;
     boolean playerTurn;
-    boolean newG = false;
     boolean xWinner = false;
     boolean oWinner = false;
     int turnCount = 0;
@@ -204,7 +203,6 @@ public class TicTacToe implements ActionListener{
             xWinner = false;
             oWinner = false;
             textField.setText("Tic Tac Toe");
-            newG = true;
             gameOver();
         });
     }
@@ -381,16 +379,12 @@ public class TicTacToe implements ActionListener{
 
     public void gameOver(){
         turnCount = 0;
-        if(newG){
-            resetButtons();
-            checkWinner();
-            gameDraw();
-            for(int i = 0; i < 9; i++){
-                buttons[i].setEnabled(true);
-                buttons[i].setBackground(Color.pink);
-            }
-        }else{
-            frame.dispose();
+        resetButtons();
+        checkWinner();
+        gameDraw();
+        for(int i = 0; i < 9; i++){
+            buttons[i].setEnabled(true);
+            buttons[i].setBackground(Color.pink);
         }
     }
 
