@@ -60,19 +60,19 @@ public class TicTacToe implements ActionListener{
                         playerTurn = false;
                         if(currentPlayers.size() < 2){
                             textField.setText("O Turn");
-                        }else{
+                        } else {
                             textField.setText(currentPlayers.get(1).getFirstName() + "'s Turn (O)");
                         }
                         turnCount++;
                         checkWinner();
                     }
-                }else{
+                } else {
                     if(Objects.equals(buttons[i].getText(), "")){
                         buttons[i].setText("O");
                         playerTurn = true;
                         if(currentPlayers.size() < 2){
                             textField.setText("X Turn");
-                        }else{
+                        } else {
                             textField.setText(currentPlayers.get(0).getFirstName() + "'s Turn (X)");
                         }
                         turnCount++;
@@ -91,13 +91,14 @@ public class TicTacToe implements ActionListener{
             public void windowOpened(WindowEvent e){
                 try{
                     file = new File("src//Score//score.txt");
-                    if(!file.exists()){
+                    if(! file.exists()){
                         file.createNewFile();
                     }
                 } catch(IOException io){
                     System.err.println("New file created");
                 }
             }
+
             @Override
             public void windowClosing(WindowEvent e){//writes to the file per project requirements
                 if(currentPlayers.size() == 2){
@@ -116,7 +117,7 @@ public class TicTacToe implements ActionListener{
             }
         });
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(1000,1000);
+        frame.setSize(1000, 1000);
         frame.getContentPane().setBackground(Color.darkGray);
         frame.setLayout(new BorderLayout());//layout manager per project requirements
         frame.setVisible(true);
@@ -146,7 +147,7 @@ public class TicTacToe implements ActionListener{
 
     public void winnerSettings(){
         winner.setLayout(new BorderLayout());
-        winner.setBounds(0,0,800,100);
+        winner.setBounds(0, 0, 800, 100);
         winner.setBackground(Color.darkGray);
         winner.add(textField);
     }
@@ -163,17 +164,17 @@ public class TicTacToe implements ActionListener{
     }
 
     public void setAddPlayer(){
-        addPlayer.addActionListener(e ->{
+        addPlayer.addActionListener(e -> {
             try{
                 if(currentPlayers.size() < 2){
                     name = JOptionPane.showInputDialog("Enter your first name");
                     person = new Player(name);
                     currentPlayers.add(person);
                     players.setText(String.valueOf(currentPlayers));
-                }else{
+                } else {
                     throw new MoreThan2PlayersException();//throws the custom exception per project reqs
                 }
-            }catch(MoreThan2PlayersException ex){
+            } catch(MoreThan2PlayersException ex){
                 JOptionPane.showMessageDialog(null, ex.getMessage());
             }
         });
@@ -198,8 +199,8 @@ public class TicTacToe implements ActionListener{
 
     public void playAgainSettings(){
         playAgain.setEnabled(true);
-        playAgain.setSize(100, 50); 
-        playAgain.addActionListener(ActionListener ->{
+        playAgain.setSize(100, 50);
+        playAgain.addActionListener(ActionListener -> {
             xWinner = false;
             oWinner = false;
             textField.setText("Tic Tac Toe");
@@ -213,14 +214,14 @@ public class TicTacToe implements ActionListener{
             playerTurn = true;
             if(currentPlayers.size() < 2){
                 textField.setText("X Turn");
-            }else{
+            } else {
                 textField.setText(currentPlayers.get(0).getFirstName() + "'s Turn (X)");
             }
-        }else{
+        } else {
             playerTurn = false;
             if(currentPlayers.size() < 2){
                 textField.setText("O Turn");
-            }else{
+            } else {
                 textField.setText(currentPlayers.get(1).getFirstName() + "'s Turn (O)");
             }
         }
@@ -231,98 +232,83 @@ public class TicTacToe implements ActionListener{
         if((Objects.equals(buttons[0].getText(), "X")) &&
                 (Objects.equals(buttons[1].getText(), "X")) &&
                 (Objects.equals(buttons[2].getText(), "X"))
-        ) {
-            xWin(0,1,2);
-        }
-        else if((Objects.equals(buttons[3].getText(), "X")) &&
+        ){
+            xWin(0, 1, 2);
+        } else if((Objects.equals(buttons[3].getText(), "X")) &&
                 (Objects.equals(buttons[4].getText(), "X")) &&
                 (Objects.equals(buttons[5].getText(), "X"))
-        ) {
-            xWin(3,4,5);
-        }
-        else if((Objects.equals(buttons[6].getText(), "X")) &&
+        ){
+            xWin(3, 4, 5);
+        } else if((Objects.equals(buttons[6].getText(), "X")) &&
                 (Objects.equals(buttons[7].getText(), "X")) &&
                 (Objects.equals(buttons[8].getText(), "X"))
-        ) {
-            xWin(6,7,8);
-        }
-        else if((Objects.equals(buttons[0].getText(), "X")) &&
+        ){
+            xWin(6, 7, 8);
+        } else if((Objects.equals(buttons[0].getText(), "X")) &&
                 (Objects.equals(buttons[3].getText(), "X")) &&
                 (Objects.equals(buttons[6].getText(), "X"))
-        ) {
-            xWin(0,3,6);
-        }
-        else if((Objects.equals(buttons[1].getText(), "X")) &&
+        ){
+            xWin(0, 3, 6);
+        } else if((Objects.equals(buttons[1].getText(), "X")) &&
                 (Objects.equals(buttons[4].getText(), "X")) &&
                 (Objects.equals(buttons[7].getText(), "X"))
-        ) {
-            xWin(1,4,7);
-        }
-        else if((Objects.equals(buttons[2].getText(), "X")) &&
+        ){
+            xWin(1, 4, 7);
+        } else if((Objects.equals(buttons[2].getText(), "X")) &&
                 (Objects.equals(buttons[5].getText(), "X")) &&
                 (Objects.equals(buttons[8].getText(), "X"))
-        ) {
-            xWin(2,5,8);
-        }
-        else if((Objects.equals(buttons[0].getText(), "X")) &&
+        ){
+            xWin(2, 5, 8);
+        } else if((Objects.equals(buttons[0].getText(), "X")) &&
                 (Objects.equals(buttons[4].getText(), "X")) &&
                 (Objects.equals(buttons[8].getText(), "X"))
-        ) {
-            xWin(0,4,8);
-        }
-        else if((Objects.equals(buttons[2].getText(), "X")) &&
+        ){
+            xWin(0, 4, 8);
+        } else if((Objects.equals(buttons[2].getText(), "X")) &&
                 (Objects.equals(buttons[4].getText(), "X")) &&
                 (Objects.equals(buttons[6].getText(), "X"))
-        ) {
-            xWin(2,4,6);
-        }
-        else if((Objects.equals(buttons[0].getText(), "O")) &&
+        ){
+            xWin(2, 4, 6);
+        } else if((Objects.equals(buttons[0].getText(), "O")) &&
                 (Objects.equals(buttons[1].getText(), "O")) &&
                 (Objects.equals(buttons[2].getText(), "O"))
-        ) {
-            oWin(0,1,2);
-        }
-        else if((Objects.equals(buttons[3].getText(), "O")) &&
+        ){
+            oWin(0, 1, 2);
+        } else if((Objects.equals(buttons[3].getText(), "O")) &&
                 (Objects.equals(buttons[4].getText(), "O")) &&
                 (Objects.equals(buttons[5].getText(), "O"))
-        ) {
-            oWin(3,4,5);
-        }
-        else if((Objects.equals(buttons[6].getText(), "O")) &&
+        ){
+            oWin(3, 4, 5);
+        } else if((Objects.equals(buttons[6].getText(), "O")) &&
                 (Objects.equals(buttons[7].getText(), "O")) &&
                 (Objects.equals(buttons[8].getText(), "O"))
-        ) {
-            oWin(6,7,8);
-        }
-        else if((Objects.equals(buttons[0].getText(), "O")) &&
+        ){
+            oWin(6, 7, 8);
+        } else if((Objects.equals(buttons[0].getText(), "O")) &&
                 (Objects.equals(buttons[3].getText(), "O")) &&
                 (Objects.equals(buttons[6].getText(), "O"))
-        ) {
-            oWin(0,3,6);
-        }
-        else if((Objects.equals(buttons[1].getText(), "O")) &&
+        ){
+            oWin(0, 3, 6);
+        } else if((Objects.equals(buttons[1].getText(), "O")) &&
                 (Objects.equals(buttons[4].getText(), "O")) &&
                 (Objects.equals(buttons[7].getText(), "O"))
-        ) {
-            oWin(1,4,7);
-        }
-        else if((Objects.equals(buttons[2].getText(), "O")) &&
+        ){
+            oWin(1, 4, 7);
+        } else if((Objects.equals(buttons[2].getText(), "O")) &&
                 (Objects.equals(buttons[5].getText(), "O")) &&
                 (Objects.equals(buttons[8].getText(), "O"))
-        ) {
-            oWin(2,5,8);
-        }
-        else if((Objects.equals(buttons[0].getText(), "O")) &&
+        ){
+            oWin(2, 5, 8);
+        } else if((Objects.equals(buttons[0].getText(), "O")) &&
                 (Objects.equals(buttons[4].getText(), "O")) &&
                 (Objects.equals(buttons[8].getText(), "O"))
-        ) {
-            oWin(0,4,8);
-        }
-        else if((Objects.equals(buttons[2].getText(), "O")) &&
+        ){
+            oWin(0, 4, 8);
+        } else if((Objects.equals(buttons[2].getText(), "O")) &&
                 (Objects.equals(buttons[4].getText(), "O")) &&
                 (Objects.equals(buttons[6].getText(), "O"))
-        ) {
-            oWin(2,4,6);
+        ){
+            oWin(2, 4, 6);
         }
     }
 
@@ -332,16 +318,16 @@ public class TicTacToe implements ActionListener{
         buttons[b].setBackground(Color.cyan);
         buttons[c].setBackground(Color.cyan);
         xWinner = true;
-            if(currentPlayers.size() < 2){
-                textField.setText(ref.refRuling(xWinner, oWinner));
-            }else{
-                int currentPoints = currentPlayers.get(0).getPoints();
-                textField.setText(ref.refRuling(currentPlayers.get(0), xWinner, oWinner));
-                currentPoints += points.updatePoints(currentPlayers.get(0), true);
-                currentPlayers.get(0).setPoints(currentPoints);
-                players.setText(String.valueOf(currentPlayers));
-                checkPoints();
-            }
+        if(currentPlayers.size() < 2){
+            textField.setText(ref.refRuling(xWinner, oWinner));
+        } else {
+            int currentPoints = currentPlayers.get(0).getPoints();
+            textField.setText(ref.refRuling(currentPlayers.get(0), xWinner, oWinner));
+            currentPoints += points.updatePoints(currentPlayers.get(0), true);
+            currentPlayers.get(0).setPoints(currentPoints);
+            players.setText(String.valueOf(currentPlayers));
+            checkPoints();
+        }
         for(int i = 0; i < 9; i++){
             buttons[i].setEnabled(false);
         }
@@ -354,16 +340,16 @@ public class TicTacToe implements ActionListener{
         buttons[b].setBackground(Color.cyan);
         buttons[c].setBackground(Color.cyan);
         oWinner = true;
-            if(currentPlayers.size() < 2){
-                textField.setText(ref.refRuling(xWinner, oWinner));
-            } else {
-                int currentPoints = currentPlayers.get(1).getPoints();
-                textField.setText(ref.refRuling(currentPlayers.get(1), xWinner, oWinner));
-                currentPoints += points.updatePoints(currentPlayers.get(1), true);
-                currentPlayers.get(1).setPoints(currentPoints);
-                players.setText(String.valueOf(currentPlayers));
-                checkPoints();
-            }
+        if(currentPlayers.size() < 2){
+            textField.setText(ref.refRuling(xWinner, oWinner));
+        } else {
+            int currentPoints = currentPlayers.get(1).getPoints();
+            textField.setText(ref.refRuling(currentPlayers.get(1), xWinner, oWinner));
+            currentPoints += points.updatePoints(currentPlayers.get(1), true);
+            currentPlayers.get(1).setPoints(currentPoints);
+            players.setText(String.valueOf(currentPlayers));
+            checkPoints();
+        }
         for(int i = 0; i < 9; i++){
             buttons[i].setEnabled(false);
         }
@@ -371,7 +357,7 @@ public class TicTacToe implements ActionListener{
 
     //checks if the game is a draw
     public void gameDraw(){
-        if((!xWinner || !oWinner) && turnCount == 9){
+        if((! xWinner || ! oWinner) && turnCount == 9){
             textField.setText(ref.refRuling(xWinner, oWinner));
         }
     }
@@ -400,7 +386,7 @@ public class TicTacToe implements ActionListener{
         if(currentPlayers.get(0).getPoints() == 100 && xCount < 1){
             prize.updatePoints(currentPlayers.get(0), true);
             xCount++;
-        }else if(currentPlayers.get(1).getPoints() == 100 && oCount < 1){
+        } else if(currentPlayers.get(1).getPoints() == 100 && oCount < 1){
             prize.updatePoints(currentPlayers.get(1), true);
             oCount++;
         }
